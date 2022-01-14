@@ -3,19 +3,26 @@
 let playerScore = 0;
 let computerScore = 0;
 let tieScore = 0;
-for (i = 0; i <= 4; i++) {
-  function computerPlay() {
+function Porea() {
+function computerPlay() {
   const possibleChoices = ["rock", "paper", "scissors"];
   let randomNumber = Math.floor(Math.random() * 3) + 1;
   let computerSelection = possibleChoices[randomNumber - 1];
   console.log("The PC chose: " + computerSelection);
   return computerSelection;
 }
-function userPlay() {
-  let playerSelection = prompt("Please choose one of the following: rock, paper or scissors", "Rock");
-  console.log("The player chose: " + playerSelection);
-  return playerSelection.toLowerCase();
+
+function userPlay(playerSelection) {
+  return playerSelection;
 }
+
+const buttons = document.querySelectorAll('button');
+  buttons.forEach((button) => {
+  button.addEventListener('click', (e) => {
+  userPlay(e.target.value);
+  });
+});
+
 // Declare the 2 constants that can be used by the 3rd function, playRound()
 const playerSelection = userPlay();
 const computerSelection = computerPlay();      
@@ -56,9 +63,10 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 }
-// Display the output of the 3rd function
-  console.log(playRound(playerSelection, computerSelection));
 }
+// Display the output of the 3rd function
+ // console.log(playRound(playerSelection, computerSelection));
+
 // Display final results:
 const para = document.querySelector('p');
 para.textContent = "Computer: " + computerScore + '. ' + "Player: " + playerScore + '. ' + "Tie: " + tieScore;

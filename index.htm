@@ -33,8 +33,41 @@ Press <b>F12</b> to open the <b>Developer Tools</b><br>
 in your browser and access the<br>
 <b>Console</b> tab.</b>
 </p>
-<script src="script.js">
+<button value="rock">Rock</button>
+<button value="paper">Paper</button>
+<button value="scissors">Scissors</button>
+
+<script>
+
+function userPlay(e) {
+    let playerChoice = e;
+    console.log('The user chose:' +  e);
+    return playerChoice;
+}
+
+function computerPlay() {
+  const possibleChoices = ["rock", "paper", "scissors"];
+  let randomNumber = Math.floor(Math.random() * 3) + 1;
+  let computerSelection = possibleChoices[randomNumber - 1];
+  console.log("The PC chose: " + computerSelection);
+  return computerSelection;
+}
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    userPlay(e.target.value);
     computerPlay();
+    
+  });
+});
+
+
+
 </script>
+
+<!--<script src="script.js">
+    computerPlay();
+</script>-->
 </body>
 </html>
