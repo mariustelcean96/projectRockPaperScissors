@@ -39,10 +39,13 @@ in your browser and access the<br>
 
 <script>
 
+let playerScore = 0;
+let computerScore = 0;
+let tieScore = 0;
+
 function userPlay(e) {
-    let playerChoice = e;
     console.log('The user chose:' +  e);
-    return playerChoice;
+    return e;
 }
 
 function computerPlay() {
@@ -56,14 +59,15 @@ function computerPlay() {
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
   button.addEventListener('click', (e) => {
-    userPlay(e.target.value);
-    computerPlay();
-    
+    if(userPlay(e.target.value) === "rock") {
+        if (computerPlay() === "rock") {
+            console.log('tie');
+        } else {
+            console.log('Eureka!');
+        }
+    }
   });
 });
-
-
-
 </script>
 
 <!--<script src="script.js">

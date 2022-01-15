@@ -3,7 +3,7 @@
 let playerScore = 0;
 let computerScore = 0;
 let tieScore = 0;
-function Porea() {
+
 function computerPlay() {
   const possibleChoices = ["rock", "paper", "scissors"];
   let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -63,7 +63,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 }
-}
+
 // Display the output of the 3rd function
  // console.log(playRound(playerSelection, computerSelection));
 
