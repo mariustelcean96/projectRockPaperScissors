@@ -2,10 +2,6 @@ let playerScore = 0;
 let computerScore = 0;
 let tieScore = 0;
 
-function userPlay(userSelection) {
-    return userSelection;
-}
-
 function computerPlay() {
   const possibleChoices = ["rock", "paper", "scissors"];
   let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -19,20 +15,22 @@ const para = document.createElement('p');
 infoDiv.appendChild(para);
 
 function showIntro() {
-  para.textContent = 'Intro intarziat.';
+  para.textContent = 'Hi! Welcome to my game.';
 }
-let timeoutID = setTimeout(showIntro, 5000);
+showIntro();
+//let timeoutID = setTimeout(showIntro, 5000);
 const score = document.querySelector('.score');
 const paraScore = document.createElement('p');
 score.appendChild(paraScore);
+const paraWinner = document.createElement('p');
+score.appendChild(paraWinner);
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
   button.addEventListener('click', (e) => {
     para.textContent = '';
     const computerSelection = computerPlay();
-    const userSelection = userPlay(e.target.value);
-    if (userSelection === "rock") {
+    if (e.target.value === "rock") {
         if (computerSelection === "rock") {
             para.textContent = 'The game is a tie.';
             tieScore++;
@@ -43,7 +41,7 @@ buttons.forEach((button) => {
             para.textContent = 'You won. Rock beats scissors.';
             playerScore++;
         }
-    } else if (userSelection === "paper") {
+    } else if (e.target.value === "paper") {
       if (computerSelection === "rock") {
         para.textContent = 'You won. Paper beats Rock.';
         playerScore++;
@@ -54,7 +52,7 @@ buttons.forEach((button) => {
         tieScore++;
         para.textContent = 'The game is a tie.';
       }
-    } else if (userSelection === 'scissors') {
+    } else if (e.target.value === 'scissors') {
       if (computerSelection === "paper") {
         para.textContent = 'You won. Scissors beat Paper.';
         playerScore++;
@@ -67,6 +65,15 @@ buttons.forEach((button) => {
       }
     }
 paraScore.textContent = 'PC:' + computerScore + ' ' + 'User:' + playerScore + ' ' + 'Tie:' + tieScore;
+if(computerScore === 5 || playerScore === 5 || tieScore === 5) {
+  if (computerScore > playerScore && computerScore > tieScore) {
+    paraWinner.textContent = 'The winner is the PC. Computer supremacy! 1010101...';
+  } else if (playerScore > computerScore && playerScore > tieScore) {
+    paraWinner.textContent = 'You are the winner. Congratulations! User supremacy. ATGCTGCCATTTAT...';
+  } else {
+    paraWinner.textContent = 'Nobody wins. The game is a tie.';
+  }
+}
   });
 });
 
