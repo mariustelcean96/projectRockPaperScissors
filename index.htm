@@ -12,24 +12,42 @@
                 font-size: 3rem;
                 width: 100%;
             }
-            
+            .container {
+                display: flex;
+                border: 1px solid white;
+                flex-direction: column;
+                max-width: 1000px;
+                max-height: 1000px;
+                margin: 0 auto;
+            }
+            .info {
+                width: 100%;
+                text-align: center;
+            }
+            .controls {
+                text-align: center;
+            }
+
+            .score {
+                text-align: center;
+            }
         </style>
     </head>
     
 
 <body>
-
-<div class="info">
-    
-</div>
-<div class="buttonsMenu">
+<div class="container">
+  <div class="info">  
+  </div>
+ 
+  <div class="controls">
     <button value="rock">Rock</button>
     <button value="paper">Paper</button>
     <button value="scissors">Scissors</button>
   </div>
-<div class="score"></div>
+  <div class="score"></div>
+</div> 
 <script src="script.js">
-
 </script>
 </body>
 </html>
