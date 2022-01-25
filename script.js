@@ -12,6 +12,7 @@ function computerPlay() {
 
 const infoDiv = document.querySelector('.info');
 const para = document.createElement('p');
+para.style.cssText = 'height: 150px;';
 infoDiv.appendChild(para);
 
 function showIntro() {
@@ -25,10 +26,19 @@ score.appendChild(paraScore);
 const paraWinner = document.createElement('p');
 score.appendChild(paraWinner);
 
-const buttons = document.querySelectorAll('button');
+const containerDiv = document.querySelector('.container');
+const restartDiv = document.createElement('div');
+restartDiv.classList.toggle('restart');
+
+const newGameButton = document.createElement('button');
+newGameButton.textContent = 'Restart game';
+newGameButton.style = 'text-align: center';
+newGameButton.onclick = function(){document.location.reload()};
+
+
+const buttons = document.querySelectorAll('.choice');
 buttons.forEach((button) => {
   button.addEventListener('click', (e) => {
-    para.textContent = '';
     const computerSelection = computerPlay();
     if (e.target.value === "rock") {
         if (computerSelection === "rock") {
@@ -65,14 +75,20 @@ buttons.forEach((button) => {
       }
     }
 paraScore.textContent = 'PC:' + computerScore + ' ' + 'User:' + playerScore + ' ' + 'Tie:' + tieScore;
-if(computerScore === 5 || playerScore === 5 || tieScore === 5) {
+if (computerScore === 5 || playerScore === 5 || tieScore === 5) {
   if (computerScore > playerScore && computerScore > tieScore) {
-    paraWinner.textContent = 'The winner is the PC. Computer supremacy! 1010101...';
+    paraWinner.textContent = 'The winner is the PC. Binary code supremacy! 1010101...';
   } else if (playerScore > computerScore && playerScore > tieScore) {
-    paraWinner.textContent = 'You are the winner. Congratulations! User supremacy. ATGCTGCCATTTAT...';
+    paraWinner.textContent = 'You are the winner. Congratulations! DNA supremacy. ATGCTGCCATTTAT...';
   } else {
     paraWinner.textContent = 'Nobody wins. The game is a tie.';
   }
+  containerDiv.appendChild(restartDiv);
+  restartDiv.appendChild(newGameButton);
+  const buttons = document.querySelectorAll('.choice');
+  buttons.forEach((button) => {
+    button.style.display = 'none';
+  });
 }
   });
 });

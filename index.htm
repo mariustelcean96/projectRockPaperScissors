@@ -1,52 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <style>
             body {
-                background-color: #5D3A9B;
+                background-color: #FFC299;
             }
             p {
                 font-family: Georgia, sans-serif;
-                color: #E66100;
+                color: #482C77;
                 font-size: 3rem;
                 width: 100%;
             }
             .container {
                 display: flex;
-                border: 1px solid white;
                 flex-direction: column;
-                max-width: 1000px;
-                max-height: 1000px;
+                max-width: auto;
+                max-height: auto;
                 margin: 0 auto;
-            }
-            .info {
-                width: 100%;
                 text-align: center;
+                padding: 20px;
             }
-            .controls {
-                text-align: center;
+            button {
+                cursor: pointer;
+                height: auto;
+                width: auto;
+                background: #38235C;
+                border: none;
+                color: #FFC299;
+                font-weight: 800;
+                font-size: 1.2rem;
+                margin: 0 3px;
+                padding: 5px;
+            }
+            @media only screen and (max-width: 600px) {
+                p {
+                    font-size: 7rem;
+                }
+
+                button {
+                    font-size: 4rem;
+                }
+            }
+            @media only screen and (min-width: 600px) {
+                p {
+                    font-size: 2.8rem;
+                }
+
+                button {
+                    font-size: 2.2rem;
+                }
             }
 
-            .score {
-                text-align: center;
+            @media only screen and (max-height: 600px) {
+                p {
+                    font-size: 9rem;
+                }
             }
         </style>
     </head>
-    
-
 <body>
 <div class="container">
   <div class="info">  
-  </div>
- 
-  <div class="controls">
-    <button value="rock">Rock</button>
-    <button value="paper">Paper</button>
-    <button value="scissors">Scissors</button>
-  </div>
+</div>
+<div class="controls">
+  <button class="choice" value="rock">Rock</button>
+  <button class="choice" value="paper">Paper</button>
+  <button class="choice" value="scissors">Scissors</button>
+</div>
   <div class="score"></div>
-</div> 
+</div>
 <script src="script.js">
 </script>
 </body>
